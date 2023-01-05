@@ -12,5 +12,6 @@ class HealthView(ListCreateAPIView):
     def perform_create(self, serializer):
         height = serializer.validated_data["height"]
         weight = serializer.validated_data["weight"]
+        bmi = weight / (height**2)
 
-        return serializer.save(bmi=round(weight / (height * height)))
+        return serializer.save(bmi=bmi)
