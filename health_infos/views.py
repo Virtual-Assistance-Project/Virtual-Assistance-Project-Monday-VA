@@ -1,8 +1,7 @@
-from rest_framework.generics import ListCreateAPIView
+from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
 
 from .models import Heath_Info
 from .serializers import HealthSerializer
-import ipdb
 
 
 class HealthView(ListCreateAPIView):
@@ -15,3 +14,9 @@ class HealthView(ListCreateAPIView):
         bmi = weight / (height**2)
 
         return serializer.save(bmi=bmi)
+
+
+class HealthDetailView(RetrieveUpdateDestroyAPIView):
+
+    serializer_class = HealthSerializer
+    queryset = Heath_Info.objects.all()
