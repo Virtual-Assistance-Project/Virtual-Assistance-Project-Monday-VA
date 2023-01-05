@@ -1,0 +1,8 @@
+UTILS
+
+- Se a atividade durar mais de um dia, 
+calcular os dias e debitar os horários
+da rotina do usuário, removendo as 
+atividades que estiverem nestes horários;
+
+- 
