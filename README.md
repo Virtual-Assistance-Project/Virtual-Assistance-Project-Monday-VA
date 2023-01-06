@@ -21,7 +21,7 @@ A proposta deste projeto é a de criar um meio de interação entre um banco de 
       <li><a href="#der--finance">2.5. Finance Informations</a>;</li>
       <li><a href="#der--academic">2.6. Academic Informations</a>;</li>
       <ul>
-        <li><a href="#der--educational-level">2.6.1. Educational Level Choices</a>;</li>
+        <li><a href="#der--isced">2.6.1. Educational Level Choices</a>;</li>
       </ul>
       <li><a href="#der--management">2.7. API Management</a>;</li>
     </ul>
@@ -92,7 +92,7 @@ A proposta deste projeto é a de criar um meio de interação entre um banco de 
 ___
 
 <br>
-<h2 id="initialization"><b>1. Inicialização do projeto localmente</b></h2>
+<h1 id="initialization"><b>1. Inicialização do projeto localmente</b></h1>
 <br>
 
 Primeiramente deve assegurar-se de que tem a [última versão do python](https://www.python.org/downloads/) instalada em sua máquina, além do [PostgreSQL](https://www.postgresql.org/) se optar por rodar as migrações da API para o database localmente. 
@@ -181,7 +181,7 @@ Quit the server with CTRL-BREAK.
 ___
 
 <br>
-<h2 id="der"><b>2. DER: Diagrama de Entidades e relacionamentos</b></h2>
+<h1 id="der"><b>2. DER: Diagrama de Entidades e relacionamentos</b></h1>
 <br>
 
 O *Diagrama de Entidades e Relacionamentos* (**DER**) exemplifica em forma de um fluxograma a maneira que as entidades interagem dentro do banco de dados.
@@ -224,7 +224,7 @@ Diferentemente das entidades de **Cotas** e **Informações** a interação de *
 Esta, como demonstrado no diagrama, oferece a possibilidade de inserir um evento customizado e defini-lo como rotina (ou não).
 
 <br>
-<h3 id="der--schedules"><b>2.2.1. Type Choices</b> 🔁</h3>
+<li id="der--type"><b>2.2.1. Type Choices</b> 🔁</li>
 <br>
 
 Ainda sobre *`Schedules`*, será fornecido um campo **`type`**, que definirá o tipo de *agendamento* que desejamos realizar. Para tal, temos 6 tipos diferentes de agendamento, sendo eles:
@@ -276,8 +276,60 @@ Vale ressaltar que as cotas fornecidas por padrão esperam que o total de todas 
 A entidade *`Health Informations`* será responsável por armazenar informações relevantes do usuário relacionadas a saúde como peso, altura, IMC e peso ideal. Conforme o que for descrito pelo usuário, cálculos automáticos serão realizados e, se o usuário optar por uma rotina automatizada, esta será criada levando em consideração o que for aqui informado.
 
 <br>
-<h2 id="der--finance"><b>2.5. Finance Informations </b> 💵</h2>
+<h2 id="der--finance"><b>2.5. Finance Informations</b> 💵</h2>
 <br>
 
 A entidade *`Finance Informations`* será responsável por armazenar informações relevantes do usuário relacionadas a sua vida profissional e financeira como ocupação primária, salário, pretensão salarial e aposentadoria. Conforme o que for descrito pelo usuário, cálculos automáticos serão realizados e, se o usuário optar por uma rotina automatizada, esta será criada levando em consideração os dados financeiros pessoais informados.
 
+<br>
+<h2 id="der--academic"><b>2.6. Academic Informations </b> 🎓</h2>
+<br>
+
+A entidade *`Finance Informations`* será responsável por armazenar informações relevantes do usuário relacionadas a sua vida acadêmica como nível de educação, se você é graduado ou não e a sua graduação principal.
+
+<br>
+<li id="der--isced"><b>2.6.1. Educational Level Choices</b> 🔁</li>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Dentro de <em>Academic Informations </em> teremos um campo chamado <strong><em>educational_level</em></strong> que oferecerá 10 possibilidades de preenchimento conforme as definições sobre <a href="https://datatopics.worldbank.org/education/wRsc/classification">Classificação Internacional Normalizada da Educação (CINE/ISCED)</a>:
+
+<br>
+
+___
+<center>
+
+| nome | função | descrição |
+| ---: | --- | --- |
+| **`Not informed`** (Padrão) | Não informado pelo usuário | ND |
+| **`ISCED0`** | Educação pré-primária | Destinado a crianças de até quatro anos, privilegia um enfoque holístico orientado a dar apoio inicial ao desenvolvimento cognitivo, físico, socio-emocional infantil, além de familiarizá-la com a instrução organizada fora do contexto familiar.
+| **`ISCED1`** | Educação primária, ou primeiro estágio da educação básica | Destinado a crianças de 5 a 11 anos, caracteriza-se por proporcionar destrezas básicas em leitura, escrita e matemática, além de formar uma base para a compreensão das áreas essenciais do conhecimento E o desenvolvimento pessoal e social dos estudantes. |
+| **`ISCED2`** | Educação Secundária Baixa, ou segundo estágio da educação básica | Normalmente destinado a adolescentes de 12 a 15 anos, caracteriza-se por aplicar um modelo mais orientado por disciplinas com a finalidade de introduzir conceitos teóricos sobre uma ampla gama de temas. No entanto, em alguns sistemas educativos oferecem desde esse nível programas vocacionais orientados a desenvolver destrezas pessoais para o acesso ao mercado de trabalho. |
+| **`ISCED3`** | Educação Secundária Alta | Destinado a adolescentes de 15 a 18 anos, caracteriza-se por consolidar a educação secundária com instrução mais diversificada, avançada e especialista, visando a preparação para Educação Superior, ou proporcionando destrezas para à formação profissional de nível médio. |
+| **`ISCED4`** | Educação Pós-Secundária não superior, ou Pós-Secundária não terciária | Proporciona aos estudantes dos programas de formação geral outra opção de certificação vocacional não terciária. Por outro lado, os graduados de programas vocacionais de Nível 3 podem optar por melhorar suas especializações, tendo mais oportunidade de acesso ao mercado de trabalho. |
+| **`ISCED5`** | Educação Terciária de Ciclo Curto, ou Primeiro estágio do ensino superior não conducente a uma qualificação avançada na área da investigação (bacharelato, licenciatura, mestrado) | Proporciona conhecimentos e habilidades profissionais, que atendem a ocupações específicas no mercado de trabalho. |
+| **`ISCED6`** | Graduação em Educação Terciária, ou Formação superior avançada (pós-graduada), conducente a uma qualificação na área da investigação (doutoramento) | Proporciona conhecimentos e habilidades profissionais ou acadêmicas intermediárias (nível médio de complexidade do conteúdo acadêmico). Os programas são essencialmente teóricos, embora possam incluir componentes práticos por estarem embasados em pesquisas que refletem o desenvolvimento da área ou nas melhores práticas profissionais. |
+| **`ISCED7`** | Mestrado, ou Especialização | Proporciona competências acadêmicas ou profissionais avançadas. Ainda que sejam essencialmente teóricos, podem incluir componentes práticos por estarem embasados em pesquisas que refletem os mais recentes avanços da área. |
+| **`ISCED8`** | 	Doutorado ou Pesquisa avançada | Conduzem o estudante a um título de pesquisa avançada cujas investigações são originais, tanto que costumam ser oferecidos exclusivamente por Instituições de Ensino Superior (IES) dedicadas à pesquisa. |
+
+</center>
+
+___
+###### Fonte: [Classificação Internacional Normalizada da Educação - WikiPedia](https://pt.wikipedia.org/wiki/Classifica%C3%A7%C3%A3o_Internacional_Normalizada_da_Educa%C3%A7%C3%A3o)
+
+<br>
+
+Conforme o que for descrito pelo usuário, cálculos automáticos serão realizados e, se o usuário optar por uma rotina automatizada, esta será criada levando em consideração os dados acadêmicos informados.
+
+<br>
+<h2 id="der--management"><b>2.7. API Management</b> ⚙</h2>
+<br>
+
+Por último, mas não menos importante, temos a entidade *`API_Managements`*, responsável por fornecer todas as informações do usuário armazenadas em um só local. Será através desta que toda a lógica de automatização e coleta de dados será estudada, gerando o calendário dos usuários, suas rotinas e compromissos de forma automatizada, ou caso prefira, manual.
+
+> [...] Seção ainda em construção [...]
+
+<br>
+
+<h3>Agora que conhecemos todas as entidades e suas funções, seremos introduzidos as rotas da aplicação.</h3>
+
+<br>
+
+___
