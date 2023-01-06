@@ -46,10 +46,12 @@ DJANGO_APPS = [
 
 THIRD_PARTY_APPS = ["rest_framework"]
 
+
 MY_APPS = [
     "users",
     "health_infos",
     "daily_quotas",
+    "finance_infos",
 ]
 
 

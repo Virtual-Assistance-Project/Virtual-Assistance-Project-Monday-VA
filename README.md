@@ -280,3 +280,4 @@ A entidade *`Health Informations`* será responsável por armazenar informaçõe
 <br>
 
 A entidade *`Finance Informations`* será responsável por armazenar informações relevantes do usuário relacionadas a sua vida profissional e financeira como ocupação primária, salário, pretensão salarial e aposentadoria. Conforme o que for descrito pelo usuário, cálculos automáticos serão realizados e, se o usuário optar por uma rotina automatizada, esta será criada levando em consideração os dados financeiros pessoais informados.
+
