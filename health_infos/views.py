@@ -31,8 +31,19 @@ class HealthDetailView(RetrieveUpdateDestroyAPIView):
 
     def perform_update(self, serializer):
         height = self.get_object().height
-        weight = serializer.validated_data["weight"]
+        height_a = serializer.validated_data.get("height", None)
+        weight = serializer.validated_data.get("weight", None)
 
-        bmi = weight / (height**2)
+        if height_a and weight is None:
 
-        return serializer.save(bmi=bmi)
+            if height_a:
+                bmi = weight / (height_a**2)
+                updated_instance = serializer.save(bmi=bmi)
+
+            bmi = weight / (height**2)
+
+            updated_instance = serializer.save(bmi=bmi)
+
+            return updated_instance
+
+        return serializer.save()
