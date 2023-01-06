@@ -2,7 +2,7 @@ from django.urls import path
 from rest_framework_simplejwt import views as jwt_views
 
 from . import views
-from .views import AcademicView
+from .views import AcademicDetailView, AcademicView
 
 urlpatterns = [
     path("academics/", views.AcademicView.as_view()),

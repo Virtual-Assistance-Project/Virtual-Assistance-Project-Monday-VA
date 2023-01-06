@@ -12,17 +12,12 @@ from .serializers import AcademicSerializer
 class AcademicView(CreateAPIView):
     permission_classes = [JWTAuthentication]
 
-    def create(self, request: Request) -> Response:
-        serializer = AcademicSerializer()
-        serializer.is_valid(raise_exception=True)
-        self.perform_create(serializer, request)
-        headers = self.get_success_headers(serializer.data)
-        return Response(serializer.data, status.HTTP_201_CREATED, headers=headers)
-
-    def perform_create(self, serializer: AcademicSerializer, request: Request):
-        user = get_object_or_404(User, id=request.user.id)
+    def perform_create(self, serializer: AcademicSerializer):
+        user = get_object_or_404(User, id=self.request.user)
         return serializer.save(user_id=user)
 
 
 class AcademicDetailView(RetrieveUpdateDestroyAPIView):
     permission_classes = [JWTAuthentication]
+    serializer_class = AcademicSerializer()       
+    queryset = Academic.objects.all()
