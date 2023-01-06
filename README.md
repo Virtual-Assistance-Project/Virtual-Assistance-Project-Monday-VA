@@ -333,3 +333,239 @@ Por último, mas não menos importante, temos a entidade *`API_Managements`*, re
 <br>
 
 ___
+
+<br>
+<h1 id="routes"><b>3. Rotas da Aplicação</b></h1>
+<br>
+
+Todas as rotas disponíveis na API estão sendo descritas abaixo e podem ser acessada através do comando:
+
+```powershell
+python .\manage.py runserver
+```
+
+Todas as rotas terão o mesmo padrão de resposta de erro, mudando apenas o código HTTP retornado em cada uma delas:
+
+<br>
+
+- **Corpo de resposta *400* - Campos obrigatórios não declarados**:
+```json
+{
+	"birthdate": [
+		"This field is required."
+	],
+	"first_name": [
+		"This field is required."
+	],
+	"last_name": [
+		"This field is required."
+	]
+}
+```
+
+<br>
+ 
+- **Corpo de resposta *401* - Email ou senha incorretos**:
+```json
+{
+	"detail": "No active account found with the given credentials"
+}
+```
+
+<br>
+ 
+ 
+- **Corpo de resposta *401* - Authorization Headers Ausentes**:
+```json
+{
+	"detail": "Authentication credentials were not provided."
+}
+```
+
+<br>
+  
+- **Corpo de resposta *400* - Token Inválido**:
+```json
+{
+	"detail": "Given token not valid for any token type",
+	"code": "token_not_valid",
+	"messages": [
+		{
+			"token_class": "AccessToken",
+			"token_type": "access",
+			"message": "Token is invalid or expired"
+		}
+	]
+}
+```
+
+<br>
+ 
+ 
+- **Corpo de resposta *403* - Ação não permitida para usuários não administradores**:
+```json
+{
+	"detail": "You do not have permission to perform this action."
+}
+```
+
+<br>
+ 
+- **Corpo de resposta *404* - Resultado não encontrado**:
+```json
+{
+	"detail": "Not found."
+}
+```
+
+<br>
+
+___
+
+<br>
+<h2 id="route--users"><b>3.1. Users</b></h2>
+<br>
+
+Esta rota fornece ao usuário da API um CRUD completo de cadastro, leitura, atualização e deleção de novas contas. Vale ressaltar que a deleção feita será um *`Hard Delete`* onde todas as informações não serão persistidas no database.
+
+Visando a segurança das informações do usuário da aplicação, a rota `User` é a única em toda a aplicação que compartilhará os dados dos usuários com admninistradores, sendo esses apenas dados básicos como nome de usuário, email e data de aniversário. Nenhum administrador da API terá acesso nem mesmo ao hash da senha dos usuários. Estes apenas poderão administrar atualizações e deleções de perfil conforme torne-se necessário.
+
+
+<br>
+
+___
+
+<br>
+<h3 id="route--post-users"><b>3.1.1. POST users/</b></h3>
+<br>
+
+Esta rota será responsável pelo cadastro de novos usuários na aplicação. É esperado um corpo de requisição e não é necessário um token de autorização.
+
+#### **Corpo de requisição**:
+```json
+{
+	"username": "Usuário",
+	"email": "usuario@teste.com",
+	"password": "1234Teste",
+	"birthdate": "1990-01-01",
+	"first_name": "Usuário",
+	"last_name": "Teste"
+}
+```
+
+#### **Corpo de resposta**:
+```json
+{
+  "id": "1d19f739-8e13-4e08-b0c2-d5294db15ceb",
+	"username": "Usuário",
+	"email": "usuario@teste.com",
+	"birthdate": "1990-01-01",
+	"first_name": "Usuário",
+	"last_name": "Teste"
+}
+```
+
+<br>
+
+___
+
+<br>
+<h3 id="route--get-users"><b>3.1.2. GET users/</b></h3>
+<br>
+
+Rota responsável pela listagem de todos os usuários. Apenas usuários administradores podem ter acesso a esta rota.
+
+Se o token estiver correto e o usuário for identificado como um administrador, teremos uma resposta semelhante a esta:
+
+#### **Corpo de resposta**:
+```json
+[
+	{
+		"id": "362ea31c-1856-4c86-a5c0-3330565df55d",
+		"username": "admin",
+		"email": "admin@admi.n",
+		"birthdate": "1970-01-01",
+		"first_name": "admin",
+		"last_name": "admin"
+	},
+	{
+		"id": "1d19f739-8e13-4e08-b0c2-d5294db15ceb",
+		"username": "usuario",
+		"email": "usuario@teste.com",
+		"birthdate": "1990-01-01",
+		"first_name": "Usuário",
+		"last_name": "Teste"
+	}
+]
+```
+
+<br>
+
+___
+
+<br>
+<h3 id="route--get-profile"><b>3.1.3. GET users/&ltuuid:pk&gt</b></h3>
+<br>
+
+Listagem de um único perfil de usuário. A rota apenas pode ser acessada pelo usuário dono da conta ou pelo administrador.
+
+Se o token estiver correto, teremos uma resposta semelhante a esta:
+ 
+#### **Corpo de resposta**:
+```json
+{
+  "id": "1d19f739-8e13-4e08-b0c2-d5294db15ceb",
+	"username": "Usuário",
+	"email": "usuario@teste.com",
+	"birthdate": "1990-01-01",
+	"first_name": "Usuário",
+	"last_name": "Teste"
+}
+```
+
+<br>
+
+___
+
+<br>
+<h3 id="route--patch-profile"><b>3.1.4. PATCH users/&ltuuid:pk&gt</b></h3>
+<br>
+
+Rota responsável pela atualização dos usuários. A rota recebe um corpo de requisição com todas as chaves declaradas na criação do usuário podendo ser editadas, total ou parcialmente. Apenas pode ser acessada pelo usuário dono da conta ou pelo administrador.
+
+#### **Corpo de requisição**:
+```json
+{
+  "username": "Usuário MODIFICADO"
+}
+```
+
+Se o token estiver correto e os campos da requisição forem reconhecidos, teremos uma resposta semelhante a esta:
+ 
+#### **Corpo de resposta**:
+```json
+{
+  "id": "1d19f739-8e13-4e08-b0c2-d5294db15ceb",
+	"username": "Usuário MODIFICADO",
+	"email": "usuario@teste.com",
+	"birthdate": "1990-01-01",
+	"first_name": "Usuário",
+	"last_name": "Teste"
+}
+```
+
+<br>
+
+___
+
+<br>
+<h3 id="route--delete-profile"><b>3.1.5. DELETE users/&ltuuid:pk&gt</b></h3>
+<br>
+
+Rota responsável pela deleção de um usuário. Será feito um `hard delete` no banco de dados, portando não persistirá os dados do usuário caso a requisição seja feita com sucesso.
+
+Se o token estiver correto, um ***204 NO CONTENT*** será retornado pela rota.
+
+<br>
+
+___
