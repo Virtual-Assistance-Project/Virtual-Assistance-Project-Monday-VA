@@ -10,11 +10,11 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
-from django.core.management.utils import get_random_secret_key
 import os
-import dotenv
-
 from pathlib import Path
+
+import dotenv
+from django.core.management.utils import get_random_secret_key
 
 dotenv.load_dotenv()
 
@@ -52,6 +52,7 @@ MY_APPS = [
     "health_infos",
     "daily_quotas",
     "finance_infos",
+    "academics",
 ]
 
 
