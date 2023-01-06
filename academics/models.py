@@ -1,3 +1,5 @@
+from uuid import uuid4
+
 from django.db import models
 
 
@@ -14,8 +16,8 @@ class Level(models.Choices):
     DEFAULT = "Not Informed"
 
 
-class Academic(models.model):
-    id = models.UUIDField(primary_key=True, unique=True)
+class Academic(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid4, unique=True)
     educational_level = models.CharField(max_length=255, choices=Level.choices, default=Level.DEFAULT)
     is_graduated = models.BooleanField(default=False, null=True)
     main_graduation = models.CharField(max_length=128, null=True)
