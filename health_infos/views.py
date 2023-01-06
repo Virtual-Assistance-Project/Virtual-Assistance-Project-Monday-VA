@@ -4,6 +4,7 @@ from rest_framework_simplejwt.authentication import JWTAuthentication
 
 from .models import Heath_Info
 from .serializers import HealthSerializer
+import ipdb
 
 
 class HealthView(ListCreateAPIView):
@@ -29,20 +30,9 @@ class HealthDetailView(RetrieveUpdateDestroyAPIView):
     queryset = Heath_Info.objects.all()
 
     def perform_update(self, serializer: HealthSerializer):
-        height = self.get_object().height
-        height_a = serializer.validated_data.get("height", None)
-        weight = serializer.validated_data.get("weight", None)
+        instance: Heath_Info = self.get_object()
+        height = serializer.validated_data.get("height", None) or instance.height
+        weight = serializer.validated_data.get("weight", None) or instance.weight
 
-        if height_a and weight is None:
-
-            if height_a:
-                bmi = weight / (height_a**2)
-                updated_instance = serializer.save(bmi=bmi)
-
-            bmi = weight / (height**2)
-
-            updated_instance = serializer.save(bmi=bmi)
-
-            return updated_instance
-
-        return serializer.save()
+        bmi = weight / (height**2)
+        return serializer.save(bmi=bmi)
