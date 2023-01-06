@@ -21,7 +21,7 @@ A proposta deste projeto é a de criar um meio de interação entre um banco de 
       <li><a href="#der--finance">2.5. Finance Informations</a>;</li>
       <li><a href="#der--academic">2.6. Academic Informations</a>;</li>
       <ul>
-        <li><a href="#der--educational-level">2.6.1. Educational Level Choices</a>;</li>
+        <li><a href="#der--isced">2.6.1. Educational Level Choices</a>;</li>
       </ul>
       <li><a href="#der--management">2.7. API Management</a>;</li>
     </ul>
@@ -92,7 +92,7 @@ A proposta deste projeto é a de criar um meio de interação entre um banco de 
 ___
 
 <br>
-<h2 id="initialization"><b>1. Inicialização do projeto localmente</b></h2>
+<h1 id="initialization"><b>1. Inicialização do projeto localmente</b></h1>
 <br>
 
 Primeiramente deve assegurar-se de que tem a [última versão do python](https://www.python.org/downloads/) instalada em sua máquina, além do [PostgreSQL](https://www.postgresql.org/) se optar por rodar as migrações da API para o database localmente. 
@@ -181,7 +181,7 @@ Quit the server with CTRL-BREAK.
 ___
 
 <br>
-<h2 id="der"><b>2. DER: Diagrama de Entidades e relacionamentos</b></h2>
+<h1 id="der"><b>2. DER: Diagrama de Entidades e relacionamentos</b></h1>
 <br>
 
 O *Diagrama de Entidades e Relacionamentos* (**DER**) exemplifica em forma de um fluxograma a maneira que as entidades interagem dentro do banco de dados.
@@ -224,7 +224,7 @@ Diferentemente das entidades de **Cotas** e **Informações** a interação de *
 Esta, como demonstrado no diagrama, oferece a possibilidade de inserir um evento customizado e defini-lo como rotina (ou não).
 
 <br>
-<h3 id="der--schedules"><b>2.2.1. Type Choices</b> 🔁</h3>
+<li id="der--type"><b>2.2.1. Type Choices</b> 🔁</li>
 <br>
 
 Ainda sobre *`Schedules`*, será fornecido um campo **`type`**, que definirá o tipo de *agendamento* que desejamos realizar. Para tal, temos 6 tipos diferentes de agendamento, sendo eles:
@@ -276,8 +276,296 @@ Vale ressaltar que as cotas fornecidas por padrão esperam que o total de todas 
 A entidade *`Health Informations`* será responsável por armazenar informações relevantes do usuário relacionadas a saúde como peso, altura, IMC e peso ideal. Conforme o que for descrito pelo usuário, cálculos automáticos serão realizados e, se o usuário optar por uma rotina automatizada, esta será criada levando em consideração o que for aqui informado.
 
 <br>
-<h2 id="der--finance"><b>2.5. Finance Informations </b> 💵</h2>
+<h2 id="der--finance"><b>2.5. Finance Informations</b> 💵</h2>
 <br>
 
 A entidade *`Finance Informations`* será responsável por armazenar informações relevantes do usuário relacionadas a sua vida profissional e financeira como ocupação primária, salário, pretensão salarial e aposentadoria. Conforme o que for descrito pelo usuário, cálculos automáticos serão realizados e, se o usuário optar por uma rotina automatizada, esta será criada levando em consideração os dados financeiros pessoais informados.
 
+<br>
+<h2 id="der--academic"><b>2.6. Academic Informations </b> 🎓</h2>
+<br>
+
+A entidade *`Finance Informations`* será responsável por armazenar informações relevantes do usuário relacionadas a sua vida acadêmica como nível de educação, se você é graduado ou não e a sua graduação principal.
+
+<br>
+<li id="der--isced"><b>2.6.1. Educational Level Choices</b> 🔁</li>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Dentro de <em>Academic Informations </em> teremos um campo chamado <strong><em>educational_level</em></strong> que oferecerá 10 possibilidades de preenchimento conforme as definições sobre <a href="https://datatopics.worldbank.org/education/wRsc/classification">Classificação Internacional Normalizada da Educação (CINE/ISCED)</a>:
+
+<br>
+
+___
+<center>
+
+| nome | função | descrição |
+| ---: | --- | --- |
+| **`Not informed`** (Padrão) | Não informado pelo usuário | ND |
+| **`ISCED0`** | Educação pré-primária | Destinado a crianças de até quatro anos, privilegia um enfoque holístico orientado a dar apoio inicial ao desenvolvimento cognitivo, físico, socio-emocional infantil, além de familiarizá-la com a instrução organizada fora do contexto familiar.
+| **`ISCED1`** | Educação primária, ou primeiro estágio da educação básica | Destinado a crianças de 5 a 11 anos, caracteriza-se por proporcionar destrezas básicas em leitura, escrita e matemática, além de formar uma base para a compreensão das áreas essenciais do conhecimento E o desenvolvimento pessoal e social dos estudantes. |
+| **`ISCED2`** | Educação Secundária Baixa, ou segundo estágio da educação básica | Normalmente destinado a adolescentes de 12 a 15 anos, caracteriza-se por aplicar um modelo mais orientado por disciplinas com a finalidade de introduzir conceitos teóricos sobre uma ampla gama de temas. No entanto, em alguns sistemas educativos oferecem desde esse nível programas vocacionais orientados a desenvolver destrezas pessoais para o acesso ao mercado de trabalho. |
+| **`ISCED3`** | Educação Secundária Alta | Destinado a adolescentes de 15 a 18 anos, caracteriza-se por consolidar a educação secundária com instrução mais diversificada, avançada e especialista, visando a preparação para Educação Superior, ou proporcionando destrezas para à formação profissional de nível médio. |
+| **`ISCED4`** | Educação Pós-Secundária não superior, ou Pós-Secundária não terciária | Proporciona aos estudantes dos programas de formação geral outra opção de certificação vocacional não terciária. Por outro lado, os graduados de programas vocacionais de Nível 3 podem optar por melhorar suas especializações, tendo mais oportunidade de acesso ao mercado de trabalho. |
+| **`ISCED5`** | Educação Terciária de Ciclo Curto, ou Primeiro estágio do ensino superior não conducente a uma qualificação avançada na área da investigação (bacharelato, licenciatura, mestrado) | Proporciona conhecimentos e habilidades profissionais, que atendem a ocupações específicas no mercado de trabalho. |
+| **`ISCED6`** | Graduação em Educação Terciária, ou Formação superior avançada (pós-graduada), conducente a uma qualificação na área da investigação (doutoramento) | Proporciona conhecimentos e habilidades profissionais ou acadêmicas intermediárias (nível médio de complexidade do conteúdo acadêmico). Os programas são essencialmente teóricos, embora possam incluir componentes práticos por estarem embasados em pesquisas que refletem o desenvolvimento da área ou nas melhores práticas profissionais. |
+| **`ISCED7`** | Mestrado, ou Especialização | Proporciona competências acadêmicas ou profissionais avançadas. Ainda que sejam essencialmente teóricos, podem incluir componentes práticos por estarem embasados em pesquisas que refletem os mais recentes avanços da área. |
+| **`ISCED8`** | 	Doutorado ou Pesquisa avançada | Conduzem o estudante a um título de pesquisa avançada cujas investigações são originais, tanto que costumam ser oferecidos exclusivamente por Instituições de Ensino Superior (IES) dedicadas à pesquisa. |
+
+</center>
+
+___
+###### Fonte: [Classificação Internacional Normalizada da Educação - WikiPedia](https://pt.wikipedia.org/wiki/Classifica%C3%A7%C3%A3o_Internacional_Normalizada_da_Educa%C3%A7%C3%A3o)
+
+<br>
+
+Conforme o que for descrito pelo usuário, cálculos automáticos serão realizados e, se o usuário optar por uma rotina automatizada, esta será criada levando em consideração os dados acadêmicos informados.
+
+<br>
+<h2 id="der--management"><b>2.7. API Management</b> ⚙</h2>
+<br>
+
+Por último, mas não menos importante, temos a entidade *`API_Managements`*, responsável por fornecer todas as informações do usuário armazenadas em um só local. Será através desta que toda a lógica de automatização e coleta de dados será estudada, gerando o calendário dos usuários, suas rotinas e compromissos de forma automatizada, ou caso prefira, manual.
+
+> [...] Seção ainda em construção [...]
+
+<br>
+
+<h3>Agora que conhecemos todas as entidades e suas funções, seremos introduzidos as rotas da aplicação.</h3>
+
+<br>
+
+___
+
+<br>
+<h1 id="routes"><b>3. Rotas da Aplicação</b></h1>
+<br>
+
+Todas as rotas disponíveis na API estão sendo descritas abaixo e podem ser acessada através do comando:
+
+```powershell
+python .\manage.py runserver
+```
+
+Todas as rotas terão o mesmo padrão de resposta de erro, mudando apenas o código HTTP retornado em cada uma delas:
+
+<br>
+
+- **Corpo de resposta *400* - Campos obrigatórios não declarados**:
+```json
+{
+	"birthdate": [
+		"This field is required."
+	],
+	"first_name": [
+		"This field is required."
+	],
+	"last_name": [
+		"This field is required."
+	]
+}
+```
+
+<br>
+ 
+- **Corpo de resposta *401* - Email ou senha incorretos**:
+```json
+{
+	"detail": "No active account found with the given credentials"
+}
+```
+
+<br>
+ 
+ 
+- **Corpo de resposta *401* - Authorization Headers Ausentes**:
+```json
+{
+	"detail": "Authentication credentials were not provided."
+}
+```
+
+<br>
+  
+- **Corpo de resposta *400* - Token Inválido**:
+```json
+{
+	"detail": "Given token not valid for any token type",
+	"code": "token_not_valid",
+	"messages": [
+		{
+			"token_class": "AccessToken",
+			"token_type": "access",
+			"message": "Token is invalid or expired"
+		}
+	]
+}
+```
+
+<br>
+ 
+ 
+- **Corpo de resposta *403* - Ação não permitida para usuários não administradores**:
+```json
+{
+	"detail": "You do not have permission to perform this action."
+}
+```
+
+<br>
+ 
+- **Corpo de resposta *404* - Resultado não encontrado**:
+```json
+{
+	"detail": "Not found."
+}
+```
+
+<br>
+
+___
+
+<br>
+<h2 id="route--users"><b>3.1. Users</b></h2>
+<br>
+
+Esta rota fornece ao usuário da API um CRUD completo de cadastro, leitura, atualização e deleção de novas contas. Vale ressaltar que a deleção feita será um *`Hard Delete`* onde todas as informações não serão persistidas no database.
+
+Visando a segurança das informações do usuário da aplicação, a rota `User` é a única em toda a aplicação que compartilhará os dados dos usuários com admninistradores, sendo esses apenas dados básicos como nome de usuário, email e data de aniversário. Nenhum administrador da API terá acesso nem mesmo ao hash da senha dos usuários. Estes apenas poderão administrar atualizações e deleções de perfil conforme torne-se necessário.
+
+
+<br>
+
+___
+
+<br>
+<h3 id="route--post-users"><b>3.1.1. POST users/</b></h3>
+<br>
+
+Esta rota será responsável pelo cadastro de novos usuários na aplicação. É esperado um corpo de requisição e não é necessário um token de autorização.
+
+#### **Corpo de requisição**:
+```json
+{
+	"username": "Usuário",
+	"email": "usuario@teste.com",
+	"password": "1234Teste",
+	"birthdate": "1990-01-01",
+	"first_name": "Usuário",
+	"last_name": "Teste"
+}
+```
+
+#### **Corpo de resposta**:
+```json
+{
+  "id": "1d19f739-8e13-4e08-b0c2-d5294db15ceb",
+	"username": "Usuário",
+	"email": "usuario@teste.com",
+	"birthdate": "1990-01-01",
+	"first_name": "Usuário",
+	"last_name": "Teste"
+}
+```
+
+<br>
+
+___
+
+<br>
+<h3 id="route--get-users"><b>3.1.2. GET users/</b></h3>
+<br>
+
+Rota responsável pela listagem de todos os usuários. Apenas usuários administradores podem ter acesso a esta rota.
+
+Se o token estiver correto e o usuário for identificado como um administrador, teremos uma resposta semelhante a esta:
+
+#### **Corpo de resposta**:
+```json
+[
+	{
+		"id": "362ea31c-1856-4c86-a5c0-3330565df55d",
+		"username": "admin",
+		"email": "admin@admi.n",
+		"birthdate": "1970-01-01",
+		"first_name": "admin",
+		"last_name": "admin"
+	},
+	{
+		"id": "1d19f739-8e13-4e08-b0c2-d5294db15ceb",
+		"username": "usuario",
+		"email": "usuario@teste.com",
+		"birthdate": "1990-01-01",
+		"first_name": "Usuário",
+		"last_name": "Teste"
+	}
+]
+```
+
+<br>
+
+___
+
+<br>
+<h3 id="route--get-profile"><b>3.1.3. GET users/&ltuuid:pk&gt</b></h3>
+<br>
+
+Listagem de um único perfil de usuário. A rota apenas pode ser acessada pelo usuário dono da conta ou pelo administrador.
+
+Se o token estiver correto, teremos uma resposta semelhante a esta:
+ 
+#### **Corpo de resposta**:
+```json
+{
+  "id": "1d19f739-8e13-4e08-b0c2-d5294db15ceb",
+	"username": "Usuário",
+	"email": "usuario@teste.com",
+	"birthdate": "1990-01-01",
+	"first_name": "Usuário",
+	"last_name": "Teste"
+}
+```
+
+<br>
+
+___
+
+<br>
+<h3 id="route--patch-profile"><b>3.1.4. PATCH users/&ltuuid:pk&gt</b></h3>
+<br>
+
+Rota responsável pela atualização dos usuários. A rota recebe um corpo de requisição com todas as chaves declaradas na criação do usuário podendo ser editadas, total ou parcialmente. Apenas pode ser acessada pelo usuário dono da conta ou pelo administrador.
+
+#### **Corpo de requisição**:
+```json
+{
+  "username": "Usuário MODIFICADO"
+}
+```
+
+Se o token estiver correto e os campos da requisição forem reconhecidos, teremos uma resposta semelhante a esta:
+ 
+#### **Corpo de resposta**:
+```json
+{
+  "id": "1d19f739-8e13-4e08-b0c2-d5294db15ceb",
+	"username": "Usuário MODIFICADO",
+	"email": "usuario@teste.com",
+	"birthdate": "1990-01-01",
+	"first_name": "Usuário",
+	"last_name": "Teste"
+}
+```
+
+<br>
+
+___
+
+<br>
+<h3 id="route--delete-profile"><b>3.1.5. DELETE users/&ltuuid:pk&gt</b></h3>
+<br>
+
+Rota responsável pela deleção de um usuário. Será feito um `hard delete` no banco de dados, portando não persistirá os dados do usuário caso a requisição seja feita com sucesso.
+
+Se o token estiver correto, um ***204 NO CONTENT*** será retornado pela rota.
+
+<br>
+
+___
