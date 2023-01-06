@@ -14,6 +14,7 @@ class AcademicView(CreateAPIView):
     serializer_class = AcademicSerializer  
     queryset = Academic.objects.all()
 
+
 class AcademicDetailView(RetrieveUpdateDestroyAPIView):
     authentication_classes = [JWTAuthentication]
     permission_classes = [IsAuthenticated]
