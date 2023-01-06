@@ -46,7 +46,12 @@ DJANGO_APPS = [
 
 THIRD_PARTY_APPS = ["rest_framework"]
 
-MY_APPS = ["users", "schedules"]
+MY_APPS = [
+    "users",
+    "health_infos",
+    "daily_quotas",
+    "schedules"
+]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + MY_APPS
 
