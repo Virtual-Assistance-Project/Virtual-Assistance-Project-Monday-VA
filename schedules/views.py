@@ -5,14 +5,14 @@ from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIV
 from rest_framework_simplejwt.authentication import JWTAuthentication
 
 
-class ScheduleListCreateView(ListCreateAPIView):
+class ScheduleView(ListCreateAPIView):
     authentication_classes = [JWTAuthentication]
     permission_classes = [IsAccountOwnerOrSuperuser]
     
     queryset = Schedule.objects.all()
     serializer_class = ScheduleSerializer
 
-class ScheduleRetrieveUpdateDestroyView(RetrieveUpdateDestroyAPIView):
+class ScheduleDetailView(RetrieveUpdateDestroyAPIView):
     authentication_classes = [JWTAuthentication]
     permission_classes = [IsAccountOwnerOrSuperuser]
     
