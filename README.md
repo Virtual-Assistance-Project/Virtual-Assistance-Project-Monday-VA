@@ -31,7 +31,7 @@ A proposta deste projeto é a de criar um meio de interação entre um banco de 
           <li><a href="#route--post-user">POST users/</a>;</li>
           <li><a href="#route--get-user">GET users/</a>;</li>
           <li><a href="#route--get-profile">GET users/&ltuuid:pk&gt</a>;</li>
-          <li><a href="#route--patch-profile">GET users/&ltuuid:pk&gt</a>;</li>
+          <li><a href="#route--patch-profile">PATCH users/&ltuuid:pk&gt</a>;</li>
           <li><a href="#route--delete-profile">DELETE users/&ltuuid:pk&gt</a>;</li>
         </ul>
       </li>

@@ -5,14 +5,15 @@ from .models import DailyQuota
 from .serializers import DailyQuotaSerializer
 from users.permissions import IsAccountOwnerOrSuperuser
 
+
 class DailyQuotaView(CreateAPIView):
     authentication_classes = [JWTAuthentication]
     permission_classes = [IsAccountOwnerOrSuperuser]
     serializer_class = DailyQuotaSerializer
-    
+
+
 class DailyQuotaDetailView(RetrieveUpdateDestroyAPIView):
     authentication_classes = [JWTAuthentication]
     permission_classes = [IsAccountOwnerOrSuperuser]
     queryset = DailyQuota.objects.all()
     serializer_class = DailyQuotaSerializer
-
