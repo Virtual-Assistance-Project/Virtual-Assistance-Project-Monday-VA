@@ -23,4 +23,5 @@ urlpatterns = [
     path("api/", include("daily_quotas.urls")),
     path("api/", include("finance_infos.urls")),
     path("api/", include("academics.urls")),
+    path("api/", include("schedules.urls")),
 ]
