@@ -1,10 +1,10 @@
-from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
+from rest_framework.generics import (ListCreateAPIView,
+                                     RetrieveUpdateDestroyAPIView)
 from rest_framework.permissions import IsAuthenticated
 from rest_framework_simplejwt.authentication import JWTAuthentication
 
 from .models import Heath_Info
 from .serializers import HealthSerializer
-import ipdb
 
 
 class HealthView(ListCreateAPIView):
@@ -14,7 +14,7 @@ class HealthView(ListCreateAPIView):
     serializer_class = HealthSerializer
     queryset = Heath_Info.objects.all()
 
-    def perform_create(self, serializer):
+    def perform_create(self, serializer: HealthSerializer):
         height = serializer.validated_data["height"]
         weight = serializer.validated_data["weight"]
         bmi = weight / (height**2)
@@ -29,10 +29,10 @@ class HealthDetailView(RetrieveUpdateDestroyAPIView):
     serializer_class = HealthSerializer
     queryset = Heath_Info.objects.all()
 
-    def perform_update(self, serializer):
-        height = self.get_object().height
-        weight = serializer.validated_data["weight"]
+    def perform_update(self, serializer: HealthSerializer):
+        instance: Heath_Info = self.get_object()
+        height = serializer.validated_data.get("height", None) or instance.height
+        weight = serializer.validated_data.get("weight", None) or instance.weight
 
         bmi = weight / (height**2)
-
         return serializer.save(bmi=bmi)

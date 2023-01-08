@@ -10,11 +10,11 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
-from django.core.management.utils import get_random_secret_key
 import os
-import dotenv
-
 from pathlib import Path
+
+import dotenv
+from django.core.management.utils import get_random_secret_key
 
 dotenv.load_dotenv()
 
@@ -46,11 +46,15 @@ DJANGO_APPS = [
 
 THIRD_PARTY_APPS = ["rest_framework"]
 
+
 MY_APPS = [
     "users",
     "health_infos",
     "daily_quotas",
     "schedules"
+    "finance_infos",
+    "academics",
+
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + MY_APPS
