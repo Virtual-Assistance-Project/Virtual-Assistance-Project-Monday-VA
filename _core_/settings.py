@@ -54,6 +54,7 @@ MY_APPS = [
     "finance_infos",
     "academics",
     "schedules",
+    "api_managements",
 ]
 
 
