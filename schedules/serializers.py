@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Schedule, Type
+from .models import Schedule, options
 
 
 class ScheduleSerializer(serializers.ModelSerializer):
@@ -16,7 +16,7 @@ class ScheduleSerializer(serializers.ModelSerializer):
             # "management_id",
         ]
         extra_kwargs = {
-            "educational_level": {"choices": Type.choices, "default": Type.COMMITMENT},
+            "educational_level": {"choices": options, "default": "COMMITMENT"},
         }
 
     def create(self, validated_data):
