@@ -12,5 +12,7 @@ class Finance(models.Model):
     is_retired = models.BooleanField(default=False)
 
     user = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name="finance_infos", unique=True,
+        User,
+        on_delete=models.CASCADE,
+        related_name="finance_infos",
     )

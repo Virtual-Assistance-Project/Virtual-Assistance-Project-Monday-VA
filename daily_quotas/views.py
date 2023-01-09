@@ -11,6 +11,18 @@ class DailyQuotaView(CreateAPIView):
     permission_classes = [IsAccountOwnerOrSuperuser]
     serializer_class = DailyQuotaSerializer
 
+    def perform_create(self, serializer: DailyQuotaSerializer):
+
+        quota = {
+            "work_percentage": self.kwargs["work"] / 24,
+            "sleep_percentage": self.kwargs["sleep"] / 24, 
+            "study_percentage": self.kwargs["study"] / 24, 
+            "hobby_percentage": self.kwargs["hobby"] / 24, 
+            "health_percentage": self.kwargs["health"] / 24, 
+        }
+        
+        serializer.save(quota)
+
 
 class DailyQuotaDetailView(RetrieveUpdateDestroyAPIView):
     authentication_classes = [JWTAuthentication]
