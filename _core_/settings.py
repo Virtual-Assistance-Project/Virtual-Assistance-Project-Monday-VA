@@ -53,6 +53,7 @@ MY_APPS = [
     "daily_quotas",
     "finance_infos",
     "academics",
+    "schedules",
 ]
 
 
