@@ -1,5 +1,6 @@
-from django.db import models
 from uuid import uuid4
+
+from django.db import models
 
 
 class APIManagement(models.Model):
@@ -16,4 +17,7 @@ class APIManagement(models.Model):
     )
     schedule = models.ForeignKey(
         "schedules.Schedule", on_delete=models.CASCADE, related_name="management"
+    )
+    academics = models.ForeignKey(
+        "academics.Academic", on_delete=models.CASCADE
     )
