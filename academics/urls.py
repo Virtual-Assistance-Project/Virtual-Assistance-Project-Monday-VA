@@ -1,10 +1,8 @@
 from django.urls import path
-from rest_framework_simplejwt import views as jwt_views
 
 from . import views
-from .views import AcademicDetailView, AcademicView
 
 urlpatterns = [
-    path("academics/", views.AcademicView.as_view()),
-    path("academics/<uuid:pk>", views.AcademicDetailView.as_view()),
+    path("infos/academics/", views.AcademicView.as_view()),
+    path("infos/academics/profile/", views.AcademicDetailView.as_view()),
 ]
