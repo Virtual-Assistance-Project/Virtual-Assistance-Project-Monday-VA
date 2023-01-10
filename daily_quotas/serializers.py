@@ -6,6 +6,4 @@ class DailyQuotaSerializer(serializers.ModelSerializer):
     class Meta:
         model = DailyQuota
         fields = "__all__"
-        extra_kwargs = {
-            "user": {"read_only": True}
-        }
+        extra_kwargs = {"user": {"read_only": True}}
