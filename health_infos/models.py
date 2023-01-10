@@ -11,7 +11,7 @@ class Heath_Info(models.Model):
     bmi = models.DecimalField(max_digits=4, decimal_places=2)
     ideal_weight = models.IntegerField()
 
-    user = models.ForeignKey(
+    user = models.OneToOneField(
         User,
         on_delete=models.CASCADE,
         related_name="health_infos",
