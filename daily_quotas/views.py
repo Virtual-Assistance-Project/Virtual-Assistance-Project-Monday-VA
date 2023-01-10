@@ -16,18 +16,18 @@ class DailyQuotaView(CommonInfoView):
 
     def perform_create(self, serializer: DailyQuotaSerializer):
 
-        work = serializer.validated_data.get("work", None)
-        sleep = serializer.validated_data.get("sleep", None)
-        study = serializer.validated_data.get("study", None)
-        hobby = serializer.validated_data.get("hobby", None)
-        health = serializer.validated_data.get("health", None)
+        work = serializer.validated_data.get("work", 0)
+        sleep = serializer.validated_data.get("sleep", 0)
+        study = serializer.validated_data.get("study", 0)
+        hobby = serializer.validated_data.get("hobby", 0)
+        health = serializer.validated_data.get("health", 0)
 
         quota = {
-            "work": work,
-            "sleep": sleep,
-            "study": study,
-            "hobby": hobby,
-            "health": health,
+            "work": work / 24,
+            "sleep": sleep / 24,
+            "study": study / 24,
+            "hobby": hobby / 24,
+            "health": health / 24,
         }
 
         serializer.save(**quota, user=self.request.user)
