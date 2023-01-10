@@ -14,16 +14,19 @@ class DailyQuotaView(CommonInfoView):
     serializer_class = DailyQuotaSerializer
     queryset = DailyQuota.objects.all()
 
+    categories = ["work", "sleep", "study", "hobby", "health"]
+    quota = {}
+
     def perform_create(self, serializer: DailyQuotaSerializer):
-        quota = {
-            "work": serializer.validated_data["work"] / 24,
-            "sleep": serializer.validated_data["sleep"] / 24, 
-            "study": serializer.validated_data["study"] / 24, 
-            "hobby": serializer.validated_data["hobby"] / 24, 
-            "health": serializer.validated_data["health"] / 24, 
-        }
-        DailyQuota.user = self.request.user
-        serializer.save(**quota)
+
+        for elem in self.categories:
+            if serializer.validated_data[elem] is True:
+                self.quota[elem] = serializer.validated_data[elem] / 24
+            else: 
+                self.quota[elem] = None
+
+        
+        serializer.save(**self.quota)
 
 
 class DailyQuotaDetailView(CommonInfoDetailView):
