@@ -18,7 +18,7 @@ class APIManagement(models.Model):
     schedule = models.ForeignKey(
         "schedules.Schedule", on_delete=models.CASCADE, related_name="management"
     )
-    academics = models.ForeignKey(
+    academics = models.OneToOneField(
         "academics.Academic", on_delete=models.CASCADE, related_name="management"
     )
     finance = models.OneToOneField("finance_infos.Finance", on_delete=models.CASCADE)

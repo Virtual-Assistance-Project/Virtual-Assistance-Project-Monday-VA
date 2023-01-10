@@ -20,4 +20,3 @@ class Schedule(models.Model):
     ends_at = models.DateTimeField(auto_now_add=True)
     routine_weekdays = models.CharField(max_length=23)
     description = models.TextField(max_length=500)
-    # management_id = models.ForeignKey()
