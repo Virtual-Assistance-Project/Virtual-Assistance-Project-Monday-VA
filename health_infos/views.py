@@ -1,10 +1,6 @@
-from rest_framework.generics import CreateAPIView, RetrieveUpdateDestroyAPIView
-from users.permissions import IsAccountOwner
 from rest_framework_simplejwt.authentication import JWTAuthentication
-from django.db import IntegrityError
-from django.shortcuts import get_object_or_404
-from rest_framework.views import Request, Response, status
 
+from users.permissions import IsAccountOwner
 from .models import Heath_Info
 from .serializers import HealthSerializer
 from utils.commons import CommonInfoView, CommonInfoDetailView
