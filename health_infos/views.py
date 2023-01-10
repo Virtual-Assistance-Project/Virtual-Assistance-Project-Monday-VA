@@ -2,6 +2,7 @@ from rest_framework.generics import CreateAPIView, RetrieveUpdateDestroyAPIView
 from users.permissions import IsAccountOwner
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from django.db import IntegrityError
+from django.shortcuts import get_object_or_404
 from rest_framework.views import Request, Response, status
 
 from .models import Heath_Info
@@ -40,6 +41,12 @@ class HealthDetailView(RetrieveUpdateDestroyAPIView):
 
     serializer_class = HealthSerializer
     queryset = Heath_Info.objects.all()
+
+    def get_queryset(self):
+        return self.queryset.filter(user_id=self.request.user)
+
+    def get_object(self):
+        return get_object_or_404(self.get_queryset(), user=self.request.user)
 
     def perform_update(self, serializer: HealthSerializer):
         instance: Heath_Info = self.get_object()
