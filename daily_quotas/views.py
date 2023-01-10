@@ -22,7 +22,7 @@ class DailyQuotaView(CommonInfoView):
             "hobby": serializer.validated_data["hobby"] / 24, 
             "health": serializer.validated_data["health"] / 24, 
         }
-        
+        DailyQuota.user = self.request.user
         serializer.save(**quota)
 
 
