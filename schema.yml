@@ -1,0 +1,1068 @@
+openapi: 3.0.3
+info:
+  title: Monday_VA
+  version: 1.0.0
+  description: API Monday - Assistente Virtual
+paths:
+  /api/infos/academics/:
+    post:
+      operationId: api_infos_academics_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Academic'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Academic'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Academic'
+      security:
+      - jwtAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Academic'
+          description: ''
+  /api/infos/academics/profile/:
+    get:
+      operationId: api_infos_academics_profile_retrieve
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Academic'
+          description: ''
+    put:
+      operationId: api_infos_academics_profile_update
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Academic'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Academic'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Academic'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Academic'
+          description: ''
+    patch:
+      operationId: api_infos_academics_profile_partial_update
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedAcademic'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedAcademic'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedAcademic'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Academic'
+          description: ''
+    delete:
+      operationId: api_infos_academics_profile_destroy
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/infos/finance/:
+    post:
+      operationId: api_infos_finance_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Finance'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Finance'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Finance'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Finance'
+          description: ''
+  /api/infos/finance/profile/:
+    get:
+      operationId: api_infos_finance_profile_retrieve
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Finance'
+          description: ''
+    put:
+      operationId: api_infos_finance_profile_update
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Finance'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Finance'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Finance'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Finance'
+          description: ''
+    patch:
+      operationId: api_infos_finance_profile_partial_update
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedFinance'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedFinance'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedFinance'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Finance'
+          description: ''
+    delete:
+      operationId: api_infos_finance_profile_destroy
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/infos/health/:
+    post:
+      operationId: api_infos_health_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Health'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Health'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Health'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Health'
+          description: ''
+  /api/infos/health/profile/:
+    get:
+      operationId: api_infos_health_profile_retrieve
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Health'
+          description: ''
+    put:
+      operationId: api_infos_health_profile_update
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Health'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Health'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Health'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Health'
+          description: ''
+    patch:
+      operationId: api_infos_health_profile_partial_update
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedHealth'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedHealth'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedHealth'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Health'
+          description: ''
+    delete:
+      operationId: api_infos_health_profile_destroy
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/quotas/:
+    post:
+      operationId: api_quotas_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DailyQuota'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DailyQuota'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/DailyQuota'
+      security:
+      - jwtAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DailyQuota'
+          description: ''
+  /api/quotas/profile/:
+    get:
+      operationId: api_quotas_profile_retrieve
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DailyQuota'
+          description: ''
+    put:
+      operationId: api_quotas_profile_update
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DailyQuota'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DailyQuota'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/DailyQuota'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DailyQuota'
+          description: ''
+    patch:
+      operationId: api_quotas_profile_partial_update
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedDailyQuota'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedDailyQuota'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedDailyQuota'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DailyQuota'
+          description: ''
+    delete:
+      operationId: api_quotas_profile_destroy
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/schedule/:
+    get:
+      operationId: api_schedule_list
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Schedule'
+          description: ''
+    post:
+      operationId: api_schedule_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Schedule'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Schedule'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Schedule'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Schedule'
+          description: ''
+  /api/schedule/{id}/:
+    get:
+      operationId: api_schedule_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Schedule'
+          description: ''
+    put:
+      operationId: api_schedule_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Schedule'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Schedule'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Schedule'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Schedule'
+          description: ''
+    patch:
+      operationId: api_schedule_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedSchedule'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedSchedule'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedSchedule'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Schedule'
+          description: ''
+    delete:
+      operationId: api_schedule_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/users/:
+    get:
+      operationId: api_users_list
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+          description: ''
+    post:
+      operationId: api_users_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/User'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+  /api/users/{id}/:
+    get:
+      operationId: api_users_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+    put:
+      operationId: api_users_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/User'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+    patch:
+      operationId: api_users_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedUser'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedUser'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedUser'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+    delete:
+      operationId: api_users_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/users/login/:
+    post:
+      operationId: api_users_login_create
+      description: |-
+        Takes a set of user credentials and returns an access and refresh JSON web
+        token pair to prove the authentication of those credentials.
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TokenObtainPair'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TokenObtainPair'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/TokenObtainPair'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenObtainPair'
+          description: ''
+components:
+  schemas:
+    Academic:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        educational_level:
+          $ref: '#/components/schemas/EducationalLevelEnum'
+        is_graduated:
+          type: boolean
+          nullable: true
+        main_graduation:
+          type: string
+          nullable: true
+          maxLength: 128
+    DailyQuota:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        type:
+          allOf:
+          - $ref: '#/components/schemas/DailyQuotaTypeEnum'
+          writeOnly: true
+        work:
+          type: number
+          format: double
+        sleep:
+          type: number
+          format: double
+        study:
+          type: number
+          format: double
+        hobby:
+          type: number
+          format: double
+        health:
+          type: number
+          format: double
+    DailyQuotaTypeEnum:
+      enum:
+      - daily
+      - total
+      type: string
+    EducationalLevelEnum:
+      enum:
+      - Early childhood education
+      - Primary Education
+      - Lower Secondary Education
+      - Upper Secondary Education
+      - Post-Secondary non-Tertiary Education
+      - Short-cycle tertiary education
+      - Bachelors degree or equivalent education level
+      - Masters degree or equivalent education level
+      - Doctoral degree or equivalent education level
+      - Not Informed
+      type: string
+    Finance:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        occupation:
+          type: string
+          maxLength: 128
+        salary:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        salary_claim:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        is_retired:
+          type: boolean
+        user_id:
+          type: string
+          readOnly: true
+      required:
+      - occupation
+      - salary
+      - salary_claim
+      - user_id
+    Health:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        height:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,1}(?:\.\d{0,2})?$
+        weight:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,6}(?:\.\d{0,2})?$
+        bmi:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,2}(?:\.\d{0,2})?$
+          readOnly: true
+        type_bmi:
+          type: string
+          readOnly: true
+        ideal_weight:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+      required:
+      - bmi
+      - height
+      - ideal_weight
+      - type_bmi
+      - weight
+    PatchedAcademic:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        educational_level:
+          $ref: '#/components/schemas/EducationalLevelEnum'
+        is_graduated:
+          type: boolean
+          nullable: true
+        main_graduation:
+          type: string
+          nullable: true
+          maxLength: 128
+    PatchedDailyQuota:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        type:
+          allOf:
+          - $ref: '#/components/schemas/DailyQuotaTypeEnum'
+          writeOnly: true
+        work:
+          type: number
+          format: double
+        sleep:
+          type: number
+          format: double
+        study:
+          type: number
+          format: double
+        hobby:
+          type: number
+          format: double
+        health:
+          type: number
+          format: double
+    PatchedFinance:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        occupation:
+          type: string
+          maxLength: 128
+        salary:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        salary_claim:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        is_retired:
+          type: boolean
+        user_id:
+          type: string
+          readOnly: true
+    PatchedHealth:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        height:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,1}(?:\.\d{0,2})?$
+        weight:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,6}(?:\.\d{0,2})?$
+        bmi:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,2}(?:\.\d{0,2})?$
+          readOnly: true
+        type_bmi:
+          type: string
+          readOnly: true
+        ideal_weight:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+    PatchedSchedule:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        title:
+          type: string
+          maxLength: 128
+        type:
+          $ref: '#/components/schemas/ScheduleTypeEnum'
+        begans_at:
+          type: string
+          format: date-time
+          readOnly: true
+        ends_at:
+          type: string
+          format: date-time
+          readOnly: true
+        routine_weekdays:
+          type: string
+          maxLength: 23
+        description:
+          type: string
+          maxLength: 500
+    PatchedUser:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        username:
+          type: string
+          maxLength: 64
+        email:
+          type: string
+          maxLength: 128
+        password:
+          type: string
+          writeOnly: true
+          maxLength: 128
+        birthdate:
+          type: string
+          format: date
+        first_name:
+          type: string
+          maxLength: 128
+        last_name:
+          type: string
+          maxLength: 128
+    Schedule:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        title:
+          type: string
+          maxLength: 128
+        type:
+          $ref: '#/components/schemas/ScheduleTypeEnum'
+        begans_at:
+          type: string
+          format: date-time
+          readOnly: true
+        ends_at:
+          type: string
+          format: date-time
+          readOnly: true
+        routine_weekdays:
+          type: string
+          maxLength: 23
+        description:
+          type: string
+          maxLength: 500
+      required:
+      - begans_at
+      - description
+      - ends_at
+      - routine_weekdays
+      - title
+    ScheduleTypeEnum:
+      enum:
+      - WORK
+      - SLEEP
+      - STUDY
+      - HOBBY
+      - HEALTH
+      - COMMITMENT
+      type: string
+    TokenObtainPair:
+      type: object
+      properties:
+        username:
+          type: string
+          writeOnly: true
+        password:
+          type: string
+          writeOnly: true
+        access:
+          type: string
+          readOnly: true
+        refresh:
+          type: string
+          readOnly: true
+      required:
+      - access
+      - password
+      - refresh
+      - username
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        username:
+          type: string
+          maxLength: 64
+        email:
+          type: string
+          maxLength: 128
+        password:
+          type: string
+          writeOnly: true
+          maxLength: 128
+        birthdate:
+          type: string
+          format: date
+        first_name:
+          type: string
+          maxLength: 128
+        last_name:
+          type: string
+          maxLength: 128
+      required:
+      - birthdate
+      - email
+      - first_name
+      - last_name
+      - password
+      - username
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid
+    jwtAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
