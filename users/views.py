@@ -3,10 +3,12 @@ from rest_framework_simplejwt.authentication import JWTAuthentication
 
 from .models import User
 from .serializers import UserSerializer
-from .permissions import IsAccountOwnerOrSuperuser
+from .permissions import IsAccountOwnerOrSuperuser, IsAdmin
 
 
 class UserView(ListCreateAPIView):
+    authentication_classes = [JWTAuthentication]
+    permission_classes = [IsAdmin]
     serializer_class = UserSerializer
     queryset = User.objects.all()
 

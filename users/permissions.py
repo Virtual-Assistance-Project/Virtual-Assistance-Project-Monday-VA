@@ -15,3 +15,12 @@ class IsAccountOwner(permissions.BasePermission):
         account_owner = request.user.is_authenticated and obj.user == request.user
 
         return account_owner
+
+
+class IsAdmin(permissions.BasePermission):
+    def has_permission(self, request: Request, view: View) -> bool:
+        return (
+            request.method == "POST"
+            or request.user.is_authenticated
+            and request.user.is_superuser
+        )
