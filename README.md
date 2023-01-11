@@ -569,3 +569,32 @@ Se o token estiver correto, um ***204 NO CONTENT*** será retornado pela rota.
 <br>
 
 ___
+
+<br>
+<h2 id="route--schedules"><b>3.2. Schedules</b></h2>
+<br>
+
+Esta rota fornece ao usuário logado da API um CRUD completo de criação, leitura, atualização e deleção de novos agendamentos.
+
+<br> 
+
+__
+
+<br>
+<h3 id="route--post-schedules"><b>3.2.1. POST schedule/ </b></h3>
+<br>
+
+Esta rota será responsável pela criação de novos agendamentos pelo usuário logado. É esperado um corpo de requisição e necessário um token de autorização. 
+
+#### **Corpo de requisição**:
+
+```json
+
+{
+    "title": "Estudar Next.js",
+	"type": "study",
+	"begans_at": "13:00",
+	"ends_at": "15:00",
+	"routine_weekdays": "seg-sex",
+	"description": "estudar Next em uma semana"
+}

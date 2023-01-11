@@ -3,8 +3,5 @@ from .views import DailyQuotaView, DailyQuotaDetailView
 
 urlpatterns = [
     path("quotas/", DailyQuotaView.as_view()),
-
-    # path("quotas/<uuid:pk>/", DailyQuotaDetailView.as_view()),
-
     path("quotas/profile/", DailyQuotaDetailView.as_view()),
 ]
