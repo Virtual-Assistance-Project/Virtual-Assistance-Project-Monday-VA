@@ -1,13 +1,13 @@
 from .models import Schedule
 from .serializers import ScheduleSerializer
-from users.permissions import IsAccountOwnerOrSuperuser
+from users.permissions import IsAccountOwner
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
 from rest_framework_simplejwt.authentication import JWTAuthentication
 
 
 class ScheduleView(ListCreateAPIView):
     authentication_classes = [JWTAuthentication]
-    permission_classes = [IsAccountOwnerOrSuperuser]
+    permission_classes = [IsAccountOwner]
 
     queryset = Schedule.objects.all()
     serializer_class = ScheduleSerializer
@@ -15,7 +15,7 @@ class ScheduleView(ListCreateAPIView):
 
 class ScheduleDetailView(RetrieveUpdateDestroyAPIView):
     authentication_classes = [JWTAuthentication]
-    permission_classes = [IsAccountOwnerOrSuperuser]
+    permission_classes = [IsAccountOwner]
 
     queryset = Schedule.objects.all()
     serializer_class = ScheduleSerializer
