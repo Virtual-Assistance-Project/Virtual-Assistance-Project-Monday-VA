@@ -1,5 +1,9 @@
-from rest_framework.views import Response
-from rest_framework.serializers import ModelSerializer
+from datetime import datetime
+
+
+def to_datetime(dt: datetime):
+    isoformat = datetime.fromisoformat(dt)
+    return str(isoformat)
 
 
 def custom_print(content):

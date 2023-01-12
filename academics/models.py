@@ -1,8 +1,6 @@
 from uuid import uuid4
 from django.db import models
 
-from users.models import User
-
 
 class Level(models.Choices):
     ISCED0 = "Early childhood education"
@@ -24,7 +22,9 @@ class Academic(models.Model):
     main_graduation = models.CharField(max_length=128, null=True)
 
     user = models.OneToOneField(
-        User,
+        "users.User",
         on_delete=models.CASCADE,
         related_name="academic_infos",
+        null=True,
     )
+    

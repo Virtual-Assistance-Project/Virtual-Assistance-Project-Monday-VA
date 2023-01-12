@@ -1,17 +1,11 @@
-from rest_framework_simplejwt.authentication import JWTAuthentication
-
 from utils.conversions import quota_to_percentage
 
 from .models import DailyQuota
 from .serializers import DailyQuotaSerializer
-from users.permissions import IsAccountOwner
-from utils.commons import CommonInfoView, CommonInfoDetailView
+from utils.commons import CommonAppView, CommonAppDetailView
 
 
-class DailyQuotaView(CommonInfoView):
-    authentication_classes = [JWTAuthentication]
-    permission_classes = [IsAccountOwner]
-
+class DailyQuotaView(CommonAppView):
     serializer_class = DailyQuotaSerializer
     queryset = DailyQuota.objects.all()
 
@@ -20,10 +14,7 @@ class DailyQuotaView(CommonInfoView):
         serializer.save(**percentage, user=self.request.user)
 
 
-class DailyQuotaDetailView(CommonInfoDetailView):
-    authentication_classes = [JWTAuthentication]
-    permission_classes = [IsAccountOwner]
-
+class DailyQuotaDetailView(CommonAppDetailView):
     queryset = DailyQuota.objects.all()
     serializer_class = DailyQuotaSerializer
 

@@ -21,7 +21,8 @@ class DailyQuota(models.Model):
     health = models.FloatField(default=0)
 
     user = models.OneToOneField(
-        User,
+        "users.User",
         on_delete=models.CASCADE,
-        related_name="daily_quotas",
+        related_name="daily_quota",
+        null=True,
     )
