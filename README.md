@@ -54,14 +54,14 @@ A proposta deste projeto é a de criar um meio de interação entre um banco de 
         <ul>
           <li><a href="#route--post-quotas">3.3.1. POST quotas/</a>;</li>
           <li><a href="#route--get-quotas">3.3.2. GET quotas/profile/</a>;</li>
-          <li><a href="#route--patch-quotas">3.3.3. PATCH quotas/profile/</a>;</li>
+          <li><a href="#route--patch-quotas">3.3.3. PUT quotas/profile/</a>;</li>
           <li><a href="#route--delete-quotas">3.3.4. DELETE quotas/profile/</a>;</li>
         </ul>
       </li>
       <li>
         <h3><a href="#route--health">3.4. Health Informations</a>:</h3>
         <ul>
-          <li><a href="#route--post-schedule">3.4.1. POST infos/health/</a>;</li>
+          <li><a href="#route--post-health">3.4.1. POST infos/health/</a>;</li>
           <li><a href="#route--get-profile-health">3.4.2. GET infos/health/&ltuuid:pk&gt</a>;</li>
           <li><a href="#route--patch-profile-health">3.4.3. PATCH infos/health/&ltuuid:pk&gt</a>;</li>
           <li><a href="#route--delete-health">3.4.4. DELETE infos/health/&ltuuid:pk&gt</a>;</li>
@@ -584,7 +584,7 @@ Esta rota fornece ao usuário logado da API um CRUD completo de criação, leitu
 
 <br>
 
-\_\_
+---
 
 <br>
 <h3 id="route--post-schedules"><b>3.2.1. POST schedule/ </b></h3>
@@ -719,7 +719,7 @@ Esta rota fornece ao usuário logado da API um CRUD completo de criação, leitu
 
 <br>
 
-\_\_
+---
 
 <br>
 <h3 id="route--post-quotas"><b>3.3.1. POST quotas/</b></h3>
@@ -775,14 +775,340 @@ Essa rota retornará as quotas salvas pelo usuário.
 ```
 
 <br>
-<h3 id="route--patch-quotas"><b>3.3.3. PATCH quotas/&ltuuid:pk&gt</b></h3>
+
+\_\_
+
 <br>
+<h3 id="route--patch-quotas"><b>3.3.3. PUT quotas/&ltuuid:pk&gt</b></h3>
+<br>
+
+<br>
+
+\_\_
 
 <br>
 <h3 id="route--delete-quotas"><b>3.3.4. DELETE quotas/&ltuuid:pk&gt</b></h3>
 <br>
 
 Rota responsável pela deleção de uma quota.
+Um 204 NO CONTENT será retornado pela rota
+
+<br>
+
+---
+
+<br>
+<h2 id="route--health"><b>3.4. Health</b></h2>
+<br>
+
+Esta rota fornece ao usuário logado da API um CRUD completo de criação, leitura, atualização e deleção de novas informações sobre saúde.
+
+<br>
+
+---
+
+<br>
+<h3 id="route--post-health"><b>3.4.1. POST infos/health/</b></h3>
+<br>
+
+Essa rota será responsável por receber informações sobre peso e altura e automaticamente será feito calcúlo de IMC e te informará se está na medida certa.
+
+#### **Corpo de requisição**:
+
+```json
+{
+  "height": 1.84,
+  "weight": 91.8,
+  "ideal_weight": 85
+}
+```
+
+#### **Retorno esperado**:
+
+```json
+{
+  "id": "f1cf7e94-c5ef-41e8-b0ca-3123c2796a91",
+  "height": "1.84",
+  "weight": "91.80",
+  "bmi": "27.11",
+  "type_bmi": "Overweight",
+  "ideal_weight": 85
+}
+```
+
+<br>
+
+\_\_
+
+<br>
+<h3 id="route--get-profile-health"><b>3.4.2. GET infos/health/&ltuuid:pk&gt</b></h3>
+<br>
+
+Essa rota será responsável por retornar as informações salvas em saúde
+
+#### **Retorno esperado**:
+
+```json
+{
+  "id": "f1cf7e94-c5ef-41e8-b0ca-3123c2796a91",
+  "height": "1.84",
+  "weight": "91.80",
+  "bmi": "27.11",
+  "type_bmi": "Overweight",
+  "ideal_weight": 85
+}
+```
+
+<br>
+
+\_\_
+
+<br>
+<h3 id="route--patch-profile-health"><b>3.4.3. PATCH infos/health/&ltuuid:pk&gt</b></h3>
+<br>
+
+Rota responsável pela atualização das informações sobre saúde. A rota recebe um corpo de requisição com todas as chaves declaradas na criação do agendamento podendo ser editadas, total ou parcialmente.
+
+#### **Corpo de requisição**:
+
+```json
+{
+  "weight": 84
+}
+```
+
+#### **Retorno esperado**:
+
+```json
+{
+  "id": "f1cf7e94-c5ef-41e8-b0ca-3123c2796a91",
+  "height": "1.84",
+  "weight": "84.00",
+  "bmi": "24.81",
+  "type_bmi": "Normal",
+  "ideal_weight": 85
+}
+```
+
+<br>
+
+\_\_
+
+<br>
+<h3 id="route--delete-health"><b>3.4.4. DELETE infos/health/&ltuuid:pk&gt</b></h3>
+<br>
+
+Rota responsável pela deleção de uma informação de saúde.
+Um 204 NO CONTENT será retornado pela rota
+
+<br>
+
+---
+
+<br>
+<h2 id="route--finance"><b>3.5. Finance</b></h2>
+<br>
+
+Esta rota fornece ao usuário logado da API um CRUD completo de criação, leitura, atualização e deleção de novas informações sobre finanças.
+
+<br>
+
+---
+
+<br>
+<h3 id="route--post-finance"><b>3.5.1. POST infos/finances/</b></h3>
+<br>
+
+Essa rota será responsável por receber informações sobre as finanças de um usuário.
+
+#### **Corpo de requisição**:
+
+```json
+{
+  "occupation": "Sofware Engineer",
+  "salary": 4500,
+  "salary_claim": 7000
+}
+```
+
+#### **Retorno esperado**:
+
+```json
+{
+  "id": "a6b0ed9c-4640-4e7f-8394-21f014173823",
+  "occupation": "Sofware Engineer",
+  "salary": 4500,
+  "salary_claim": 7000,
+  "is_retired": false,
+  "user_id": "09131b19-a6a4-432b-82cb-b7a0b466f28f"
+}
+```
+
+<br>
+
+\_\_
+
+<br>
+<h3 id="route--get-profile-finance"><b>3.5.2. GET infos/finances/&ltuuid:pk&gt</b></h3>
+<br>
+
+Essa rota será responsável por retornar informações sobre as finanças de um usuário.
+
+#### **Retorno esperado**:
+
+```json
+{
+  "id": "a6b0ed9c-4640-4e7f-8394-21f014173823",
+  "occupation": "Sofware Engineer",
+  "salary": 4500,
+  "salary_claim": 7000,
+  "is_retired": false,
+  "user_id": "09131b19-a6a4-432b-82cb-b7a0b466f28f"
+}
+```
+
+<br>
+
+\_\_
+
+<br>
+<h3 id="route--patch-profile-finance"><b>3.5.3. PATCH infos/finances/&ltuuid:pk&gt</b></h3>
+<br>
+
+Rota responsável pela atualização das informações sobre finanças. A rota recebe um corpo de requisição com todas as chaves declaradas na criação do agendamento podendo ser editadas, total ou parcialmente.
+
+#### **Corpo de requisição**:
+
+```json
+{
+  "salary": 5500
+}
+```
+
+#### **Retorno esperado**:
+
+```json
+{
+  "id": "a6b0ed9c-4640-4e7f-8394-21f014173823",
+  "occupation": "Sofware Engineer",
+  "salary": 5500,
+  "salary_claim": 7000,
+  "is_retired": false,
+  "user_id": "09131b19-a6a4-432b-82cb-b7a0b466f28f"
+}
+```
+
+<br>
+
+\_\_
+
+<br>
+<h3 id="route--delete-finance"><b>3.5.4. DELETE infos/finances/&ltuuid:pk&gt</b></h3>
+<br>
+
+Rota responsável pela deleção de uma informação sobre finanças.
+Um 204 NO CONTENT será retornado pela rota
+
+<br>
+
+---
+
+<br>
+<h2 id="route--academic"><b>3.6. Academic Informations</b></h2>
+<br>
+
+Esta rota fornece ao usuário logado da API um CRUD completo de criação, leitura, atualização e deleção de novas informações sobre informações academicas.
+
+<br>
+
+---
+
+<br>
+<h3 id="route--post-academic"><b>3.6.1. POST infos/academic/</b></h3>
+<br>
+
+Essa rota será responsável por receber informações academicas de um usuário.
+
+#### **Corpo de requisição**:
+
+```json
+{
+  "educational_level": "Masters degree or equivalent education level",
+  "is_graduated": true,
+  "main_graduation": "Master"
+}
+```
+
+#### **Retorno esperado**:
+
+```json
+{
+  "id": "7fcafea2-4513-4fa4-9268-9516d7ab1473",
+  "educational_level": "Masters degree or equivalent education level",
+  "is_graduated": true,
+  "main_graduation": "Master"
+}
+```
+
+<br>
+
+\_\_
+
+<br>
+<h3 id="route--get-profile-academic"><b>3.6.2. GET infos/academic/&ltuuid:pk&gt</b></h3>
+<br>
+
+Essa rota será responsável por retornar informações academicas de um usuário.
+
+#### **Retorno esperado**:
+
+```json
+{
+  "id": "7fcafea2-4513-4fa4-9268-9516d7ab1473",
+  "educational_level": "Masters degree or equivalent education level",
+  "is_graduated": true,
+  "main_graduation": "Master"
+}
+```
+
+<br>
+
+\_\_
+
+<br>
+<h3 id="route--patch-profile-academic"><b>3.6.3. PATCH infos/academic/&ltuuid:pk&gt</b></h3>
+<br>
+
+Rota responsável pela atualização das informações academicas. A rota recebe um corpo de requisição com todas as chaves declaradas na criação do agendamento podendo ser editadas, total ou parcialmente.
+
+#### **Corpo de requisição**:
+
+```json
+{
+  "main_graduation": "Doctor"
+}
+```
+
+#### **Retorno esperado**:
+
+```json
+{
+  "id": "7fcafea2-4513-4fa4-9268-9516d7ab1473",
+  "educational_level": "Masters degree or equivalent education level",
+  "is_graduated": true,
+  "main_graduation": "Doctor"
+}
+```
+
+<br>
+
+\_\_
+
+<br>
+<h3 id="route--delete-academic"><b>3.6.4. DELETE infos/academic/&ltuuid:pk&gt</b></h3>
+<br>
+
+Rota responsável pela deleção de uma informação academicas.
 Um 204 NO CONTENT será retornado pela rota
 
 <br>
