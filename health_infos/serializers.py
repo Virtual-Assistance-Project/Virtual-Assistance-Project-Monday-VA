@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Heath_Info
+from .models import HealthInfo
 
 
 class HealthSerializer(serializers.ModelSerializer):
@@ -17,6 +17,6 @@ class HealthSerializer(serializers.ModelSerializer):
             return "Overweight"
 
     class Meta:
-        model = Heath_Info
+        model = HealthInfo
         fields = ["id", "height", "weight", "bmi", "type_bmi", "ideal_weight"]
         read_only_fields = ["bmi"]

@@ -12,7 +12,8 @@ class Finance(models.Model):
     is_retired = models.BooleanField(default=False)
 
     user = models.OneToOneField(
-        User,
+        "users.User",
         on_delete=models.CASCADE,
         related_name="finance_infos",
+        null=True,
     )

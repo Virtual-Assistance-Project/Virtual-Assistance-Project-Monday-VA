@@ -12,5 +12,8 @@ class User(AbstractUser):
     last_name = models.CharField(max_length=128)
     birthdate = models.DateField()
 
+    # Managements
+    auto_schedule = models.BooleanField(default=False)
+
     # Redeclaration made for typing recognition when creating a new user.
     objects = UserManager()
