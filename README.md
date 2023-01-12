@@ -587,7 +587,7 @@ Esta rota fornece ao usuário logado da API um CRUD completo de criação, leitu
 ---
 
 <br>
-<h3 id="route--post-schedules"><b>3.2.1. POST schedule/ </b></h3>
+<h3 id="route--post-schedules"><b>3.2.1. POST schedules/ </b></h3>
 <br>
 
 Esta rota será responsável pela criação de novos agendamentos pelo usuário logado. É esperado um corpo de requisição e necessário um token de autorização.
@@ -610,7 +610,7 @@ Esta rota será responsável pela criação de novos agendamentos pelo usuário 
 \_\_
 
 <br>
-<h3 id="route--get-schedule"><b>3.2.2. GET schedule/ </b></h3>
+<h3 id="route--get-schedule"><b>3.2.2. GET schedules/ </b></h3>
 <br>
 
 Essa rota será responsável pela listagem dos agendamentos cadastrados por um usuário. É esperado um token de autorização e somente o próprio usuário que criou conseguirá listar seus agendamentos
@@ -645,7 +645,7 @@ Essa rota será responsável pela listagem dos agendamentos cadastrados por um u
 \_\_
 
 <br>
-<h3 id="route--get-schedule_id"><b>3.2.3. GET schedule/&ltuuid:pk&gt</b></h3>
+<h3 id="route--get-schedule_id"><b>3.2.3. GET schedules/&ltuuid:pk&gt</b></h3>
 <br>
 
 Essa rota será responsável pela listagem de um único agendamento. É esperado um token de autorização e somente o próprio usuário que criou conseguirá listar seu agendamento
@@ -669,7 +669,7 @@ Essa rota será responsável pela listagem de um único agendamento. É esperado
 \_\_
 
 <br>
-<h3 id="route--patch-schedule"><b>3.2.4. PATCH schedule/&ltuuid:pk&gt</b></h3>
+<h3 id="route--patch-schedule"><b>3.2.4. PATCH schedules/&ltuuid:pk&gt</b></h3>
 <br>
 
 Rota responsável pela atualização dos agendamentos. A rota recebe um corpo de requisição com todas as chaves declaradas na criação do agendamento podendo ser editadas, total ou parcialmente.
@@ -701,7 +701,7 @@ Rota responsável pela atualização dos agendamentos. A rota recebe um corpo de
 \_\_
 
 <br>
-<h3 id="route--delete-schedule"><b>3.2.5. DELETE schedule/&ltuuid:pk&gt</b></h3>
+<h3 id="route--delete-schedule"><b>3.2.5. DELETE schedules/&ltuuid:pk&gt</b></h3>
 <br>
 
 Rota responsável pela deleção de um agendamento.
