@@ -10,3 +10,10 @@ class Finance(models.Model):
     salary = models.IntegerField()
     salary_claim = models.IntegerField()
     is_retired = models.BooleanField(default=False)
+
+    user = models.OneToOneField(
+        "users.User",
+        on_delete=models.CASCADE,
+        related_name="finance_infos",
+        null=True,
+    )

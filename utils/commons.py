@@ -5,6 +5,7 @@ from rest_framework.views import Request, Response, status
 from rest_framework.generics import CreateAPIView, RetrieveUpdateDestroyAPIView
 from rest_framework_simplejwt.authentication import JWTAuthentication
 
+from users.models import User
 from users.permissions import IsAccountOwner
 
 
@@ -34,6 +35,8 @@ class CommonAppDetailView(RetrieveUpdateDestroyAPIView):
     permission_classes = [IsAccountOwner]
     
     def get_queryset(self):
+        if not self.request.user:
+            raise ValidationError("ERROOOOOU", 404)
         return self.queryset.filter(user_id=self.request.user)
 
     def get_object(self):

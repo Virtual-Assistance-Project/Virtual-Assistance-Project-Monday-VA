@@ -10,3 +10,10 @@ class HealthInfo(models.Model):
     weight = models.DecimalField(max_digits=8, decimal_places=2)
     bmi = models.DecimalField(max_digits=4, decimal_places=2)
     ideal_weight = models.IntegerField()
+
+    user = models.OneToOneField(
+        "users.User",
+        on_delete=models.CASCADE,
+        related_name="health_infos",
+        null=True,
+    )

@@ -19,3 +19,10 @@ class DailyQuota(models.Model):
     study = models.FloatField(default=0)
     hobby = models.FloatField(default=0)
     health = models.FloatField(default=0)
+
+    user = models.OneToOneField(
+        "users.User",
+        on_delete=models.CASCADE,
+        related_name="daily_quota",
+        null=True,
+    )

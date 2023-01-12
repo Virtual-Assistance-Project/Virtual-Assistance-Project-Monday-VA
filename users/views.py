@@ -14,9 +14,13 @@ class UserView(ListCreateAPIView):
     queryset = User.objects.all()
 
 
+
 class UserDetailView(RetrieveUpdateDestroyAPIView):
     authentication_classes = [JWTAuthentication]
     permission_classes = [IsAccountOwnerOrSuperuser]
 
     serializer_class = UserSerializer
     queryset = User.objects.all()
+
+    def retrieve(self, request, *args, **kwargs):
+        return super().retrieve(request, *args, **kwargs)

@@ -14,30 +14,6 @@ class User(AbstractUser):
 
     # Managements
     auto_schedule = models.BooleanField(default=False)
-    academic_infos = models.OneToOneField(
-        "academics.Academic",
-        on_delete=models.CASCADE,
-        related_name="user",
-        null=True,
-    )
-    daily_quotas = models.OneToOneField(
-        "daily_quotas.DailyQuota",
-        on_delete=models.CASCADE,
-        related_name="user",
-        null=True,
-    )
-    finance_infos = models.OneToOneField(
-        "finance_infos.Finance",
-        on_delete=models.CASCADE,
-        related_name="user",
-        null=True,
-    )
-    health_infos = models.OneToOneField(
-        "health_infos.HealthInfo",
-        on_delete=models.CASCADE,
-        related_name="user",
-        null=True,
-    )
 
     # Redeclaration made for typing recognition when creating a new user.
     objects = UserManager()
