@@ -62,27 +62,27 @@ A proposta deste projeto é a de criar um meio de interação entre um banco de 
         <h3><a href="#route--health">3.4. Health Informations</a>:</h3>
         <ul>
           <li><a href="#route--post-health">3.4.1. POST infos/health/</a>;</li>
-          <li><a href="#route--get-profile-health">3.4.2. GET infos/health/&ltuuid:pk&gt</a>;</li>
-          <li><a href="#route--patch-profile-health">3.4.3. PATCH infos/health/&ltuuid:pk&gt</a>;</li>
-          <li><a href="#route--delete-health">3.4.4. DELETE infos/health/&ltuuid:pk&gt</a>;</li>
+          <li><a href="#route--get-profile-health">3.4.2. GET infos/health/profile/</a>;</li>
+          <li><a href="#route--patch-profile-health">3.4.3. PATCH infos/health/&profile/</a>;</li>
+          <li><a href="#route--delete-health">3.4.4. DELETE infos/health/profile/</a>;</li>
         </ul>
       </li>
       <li>
         <h3><a href="#route--finance">3.5. Finance Informations</a>:</h3>
         <ul>
           <li><a href="#route--post-finance">3.5.1. POST infos/finances/</a>;</li>
-          <li><a href="#route--get-profile-finance">3.5.2. GET infos/finances/&ltuuid:pk&gt</a>;</li>
-          <li><a href="#route--patch-profile-finance">3.5.3. PATCH infos/finances/&ltuuid:pk&gt</a>;</li>
-          <li><a href="#route--delete-finance">3.5.4. DELETE infos/finances/&ltuuid:pk&gt</a>;</li>
+          <li><a href="#route--get-profile-finance">3.5.2. GET infos/finances/profile/</a>;</li>
+          <li><a href="#route--patch-profile-finance">3.5.3. PATCH infos/finances/profile/</a>;</li>
+          <li><a href="#route--delete-finance">3.5.4. DELETE infos/finances/profile/</a>;</li>
         </ul>
       </li>
       <li>
         <h3><a href="#route--academic">3.6. Academic Informations</a>:</h3>
         <ul>
           <li><a href="#route--post-academic">3.6.1. POST infos/academic/</a>;</li>
-          <li><a href="#route--get-profile-academic">3.6.2. GET infos/academic/&ltuuid:pk&gt</a>;</li>
-          <li><a href="#route--patch-profile-academic">3.6.3. PATCH infos/academic/&ltuuid:pk&gt</a>;</li>
-          <li><a href="#route--delete-academic">3.6.4. DELETE infos/academic/&ltuuid:pk&gt</a>;</li>
+          <li><a href="#route--get-profile-academic">3.6.2. GET infos/academic/profile/</a>;</li>
+          <li><a href="#route--patch-profile-academic">3.6.3. PATCH infos/academic/profile/</a>;</li>
+          <li><a href="#route--delete-academic">3.6.4. DELETE infos/academic/profile/</a>;</li>
         </ul>
       </li>
     </ul>
@@ -779,7 +779,7 @@ Essa rota retornará as quotas salvas pelo usuário.
 \_\_
 
 <br>
-<h3 id="route--patch-quotas"><b>3.3.3. PUT quotas/&ltuuid:pk&gt</b></h3>
+<h3 id="route--patch-quotas"><b>3.3.3. PUT quotas/profile/</b></h3>
 <br>
 
 <br>
@@ -787,7 +787,7 @@ Essa rota retornará as quotas salvas pelo usuário.
 \_\_
 
 <br>
-<h3 id="route--delete-quotas"><b>3.3.4. DELETE quotas/&ltuuid:pk&gt</b></h3>
+<h3 id="route--delete-quotas"><b>3.3.4. DELETE quotas/profile/</b></h3>
 <br>
 
 Rota responsável pela deleção de uma quota.
@@ -841,7 +841,7 @@ Essa rota será responsável por receber informações sobre peso e altura e aut
 \_\_
 
 <br>
-<h3 id="route--get-profile-health"><b>3.4.2. GET infos/health/&ltuuid:pk&gt</b></h3>
+<h3 id="route--get-profile-health"><b>3.4.2. GET infos/health/profile/</b></h3>
 <br>
 
 Essa rota será responsável por retornar as informações salvas em saúde
@@ -864,7 +864,7 @@ Essa rota será responsável por retornar as informações salvas em saúde
 \_\_
 
 <br>
-<h3 id="route--patch-profile-health"><b>3.4.3. PATCH infos/health/&ltuuid:pk&gt</b></h3>
+<h3 id="route--patch-profile-health"><b>3.4.3. PATCH infos/health/profile/</b></h3>
 <br>
 
 Rota responsável pela atualização das informações sobre saúde. A rota recebe um corpo de requisição com todas as chaves declaradas na criação do agendamento podendo ser editadas, total ou parcialmente.
@@ -895,7 +895,7 @@ Rota responsável pela atualização das informações sobre saúde. A rota rece
 \_\_
 
 <br>
-<h3 id="route--delete-health"><b>3.4.4. DELETE infos/health/&ltuuid:pk&gt</b></h3>
+<h3 id="route--delete-health"><b>3.4.4. DELETE infos/health/profile/</b></h3>
 <br>
 
 Rota responsável pela deleção de uma informação de saúde.
@@ -949,7 +949,7 @@ Essa rota será responsável por receber informações sobre as finanças de um 
 \_\_
 
 <br>
-<h3 id="route--get-profile-finance"><b>3.5.2. GET infos/finances/&ltuuid:pk&gt</b></h3>
+<h3 id="route--get-profile-finance"><b>3.5.2. GET infos/finances/profile/</b></h3>
 <br>
 
 Essa rota será responsável por retornar informações sobre as finanças de um usuário.
@@ -972,7 +972,7 @@ Essa rota será responsável por retornar informações sobre as finanças de um
 \_\_
 
 <br>
-<h3 id="route--patch-profile-finance"><b>3.5.3. PATCH infos/finances/&ltuuid:pk&gt</b></h3>
+<h3 id="route--patch-profile-finance"><b>3.5.3. PATCH infos/finances/profile/</b></h3>
 <br>
 
 Rota responsável pela atualização das informações sobre finanças. A rota recebe um corpo de requisição com todas as chaves declaradas na criação do agendamento podendo ser editadas, total ou parcialmente.
@@ -1003,7 +1003,7 @@ Rota responsável pela atualização das informações sobre finanças. A rota r
 \_\_
 
 <br>
-<h3 id="route--delete-finance"><b>3.5.4. DELETE infos/finances/&ltuuid:pk&gt</b></h3>
+<h3 id="route--delete-finance"><b>3.5.4. DELETE infos/finances/profile/</b></h3>
 <br>
 
 Rota responsável pela deleção de uma informação sobre finanças.
@@ -1055,7 +1055,7 @@ Essa rota será responsável por receber informações academicas de um usuário
 \_\_
 
 <br>
-<h3 id="route--get-profile-academic"><b>3.6.2. GET infos/academic/&ltuuid:pk&gt</b></h3>
+<h3 id="route--get-profile-academic"><b>3.6.2. GET infos/academic/profile/</b></h3>
 <br>
 
 Essa rota será responsável por retornar informações academicas de um usuário.
@@ -1076,7 +1076,7 @@ Essa rota será responsável por retornar informações academicas de um usuári
 \_\_
 
 <br>
-<h3 id="route--patch-profile-academic"><b>3.6.3. PATCH infos/academic/&ltuuid:pk&gt</b></h3>
+<h3 id="route--patch-profile-academic"><b>3.6.3. PATCH infos/academic/profile/</b></h3>
 <br>
 
 Rota responsável pela atualização das informações academicas. A rota recebe um corpo de requisição com todas as chaves declaradas na criação do agendamento podendo ser editadas, total ou parcialmente.
@@ -1105,7 +1105,7 @@ Rota responsável pela atualização das informações academicas. A rota recebe
 \_\_
 
 <br>
-<h3 id="route--delete-academic"><b>3.6.4. DELETE infos/academic/&ltuuid:pk&gt</b></h3>
+<h3 id="route--delete-academic"><b>3.6.4. DELETE infos/academic/profile/</b></h3>
 <br>
 
 Rota responsável pela deleção de uma informação academicas.
