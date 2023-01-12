@@ -578,7 +578,7 @@ Esta rota fornece ao usuário logado da API um CRUD completo de criação, leitu
 
 <br> 
 
-__
+___
 
 <br>
 <h3 id="route--post-schedules"><b>3.2.1. POST schedule/ </b></h3>

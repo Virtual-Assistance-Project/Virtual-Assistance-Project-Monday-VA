@@ -1,17 +1,11 @@
-from rest_framework_simplejwt.authentication import JWTAuthentication
-
-from users.permissions import IsAccountOwner
-from .models import Heath_Info
+from .models import HealthInfo
 from .serializers import HealthSerializer
-from utils.commons import CommonInfoView, CommonInfoDetailView
+from utils.commons import CommonAppView, CommonAppDetailView
 
 
-class HealthView(CommonInfoView):
-    authentication_classes = [JWTAuthentication]
-    permission_classes = [IsAccountOwner]
-
+class HealthView(CommonAppView):
     serializer_class = HealthSerializer
-    queryset = Heath_Info.objects.all()
+    queryset = HealthInfo.objects.all()
 
     def perform_create(self, serializer: HealthSerializer):
         height = serializer.validated_data["height"]
@@ -21,15 +15,12 @@ class HealthView(CommonInfoView):
         return serializer.save(bmi=bmi, user=self.request.user)
 
 
-class HealthDetailView(CommonInfoDetailView):
-    authentication_classes = [JWTAuthentication]
-    permission_classes = [IsAccountOwner]
-
+class HealthDetailView(CommonAppDetailView):
     serializer_class = HealthSerializer
-    queryset = Heath_Info.objects.all()
+    queryset = HealthInfo.objects.all()
 
     def perform_update(self, serializer: HealthSerializer):
-        instance: Heath_Info = self.get_object()
+        instance: HealthInfo = self.get_object()
         height = serializer.validated_data.get("height", None) or instance.height
         weight = serializer.validated_data.get("weight", None) or instance.weight
 

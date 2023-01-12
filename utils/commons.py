@@ -3,9 +3,15 @@ from django.core.exceptions import ValidationError
 from django.shortcuts import get_object_or_404
 from rest_framework.views import Request, Response, status
 from rest_framework.generics import CreateAPIView, RetrieveUpdateDestroyAPIView
+from rest_framework_simplejwt.authentication import JWTAuthentication
+
+from users.permissions import IsAccountOwner
 
 
-class CommonInfoView(CreateAPIView):  # Views
+class CommonAppView(CreateAPIView):  # Views
+    authentication_classes = [JWTAuthentication]
+    permission_classes = [IsAccountOwner]
+
     def perform_create(self, serializer):
         return serializer.save(user=self.request.user)
 
@@ -23,7 +29,10 @@ class CommonInfoView(CreateAPIView):  # Views
             return Response({"detail": error.message}, error.code)
 
 
-class CommonInfoDetailView(RetrieveUpdateDestroyAPIView):
+class CommonAppDetailView(RetrieveUpdateDestroyAPIView):
+    authentication_classes = [JWTAuthentication]
+    permission_classes = [IsAccountOwner]
+    
     def get_queryset(self):
         return self.queryset.filter(user_id=self.request.user)
 
@@ -35,5 +44,6 @@ class CommonInfoDetailView(RetrieveUpdateDestroyAPIView):
             return super().update(request, *args, **kwargs)
         except ValidationError as error:
             return Response({"detail": error.message}, error.code)
+
 
 # ============================================
