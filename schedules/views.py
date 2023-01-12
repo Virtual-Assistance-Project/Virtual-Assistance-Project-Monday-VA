@@ -15,6 +15,7 @@ class ScheduleView(ListCreateAPIView):
 
 class ScheduleDetailView(RetrieveUpdateDestroyAPIView):
     authentication_classes = [JWTAuthentication]
+    permission_classes = [IsAccountOwner]
 
     queryset = Schedule.objects.all()
     serializer_class = ScheduleSerializer
