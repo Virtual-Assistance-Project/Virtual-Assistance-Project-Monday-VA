@@ -1,7 +1,37 @@
 from rest_framework import serializers
 from .models import HealthInfo
 
+from drf_spectacular.utils import extend_schema_serializer
+from drf_spectacular.utils import OpenApiExample
 
+
+@extend_schema_serializer(
+    examples=[
+        OpenApiExample(
+            "Criação Informações Saúde",
+            summary="Informações de saúde",
+            description="Rota para criação de informações sobre saúde",
+            value={"height": 1.84, "weight": 91.8, "ideal_weight": 85},
+            request_only=True,
+            response_only=False,
+        ),
+        OpenApiExample(
+            "Criação Informações Saúde",
+            summary="Informações de saúde",
+            description="Rota para criação de informações sobre saúde",
+            value={
+                "id": "5e231291-ec55-4151-984d-57b57c1981f0",
+                "height": "1.84",
+                "weight": "91.80",
+                "bmi": "27.11",
+                "type_bmi": "Overweight",
+                "ideal_weight": 85,
+            },
+            request_only=False,
+            response_only=True,
+        ),
+    ]
+)
 class HealthSerializer(serializers.ModelSerializer):
     type_bmi = serializers.SerializerMethodField()
 
